@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
+import { ContactDialog } from "@/components/landing/ContactDialog";
 
 export function Navbar() {
   return (
@@ -19,9 +20,14 @@ export function Navbar() {
           <Button variant="ghost" size="sm" className="hidden sm:inline-flex" asChild>
             <a href="tel:+910000000000"><Phone className="w-4 h-4 mr-1" /> Call</a>
           </Button>
-          <Button size="sm" className="gradient-cta text-primary-foreground hover:opacity-90 shadow-soft" asChild>
-            <a href="#contact">Get Demo</a>
-          </Button>
+          <ContactDialog
+            defaultTitle="Book a Live Demo"
+            trigger={
+              <Button size="sm" className="gradient-cta text-primary-foreground hover:opacity-90 shadow-soft">
+                Get Demo
+              </Button>
+            }
+          />
         </div>
       </div>
     </header>
