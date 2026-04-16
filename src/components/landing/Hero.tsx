@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PlayCircle, ShieldCheck, MapPin, Award, Building2 } from "lucide-react";
-import heroImg from "@/assets/hero-meeting-room.jpg";
+import heroBg from "@/assets/hero-datacenter.jpg";
 
 const trust = [
   { icon: Building2, label: "5000+ Projects Delivered" },
@@ -12,85 +12,116 @@ const trust = [
 
 export function Hero() {
   return (
-    <section id="top" className="relative pt-28 pb-20 overflow-hidden">
-      <div className="absolute inset-0 grid-pattern opacity-60 pointer-events-none" />
-      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full gradient-hero opacity-20 blur-3xl pointer-events-none" />
+    <section
+      id="top"
+      className="relative min-h-[100svh] flex items-center pt-28 pb-20 overflow-hidden isolate"
+    >
+      {/* Background image */}
+      <div className="absolute inset-0 -z-20">
+        <img
+          src={heroBg}
+          alt="Futuristic data center corridor with glowing server racks"
+          width={1920}
+          height={1080}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative">
+      {/* Dark gradient overlays for legibility */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.12_0.06_260)/0.92] via-[oklch(0.14_0.08_258)/0.78] to-[oklch(0.14_0.08_258)/0.45]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[oklch(0.10_0.05_260)/0.85] via-transparent to-[oklch(0.10_0.05_260)/0.55]" />
+
+      {/* Glow accents */}
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary-glow/20 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-primary/30 blur-3xl pointer-events-none -z-10" />
+
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative w-full">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
+          className="lg:col-span-8 text-white"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-semibold mb-6 border border-primary/10">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-xs font-semibold mb-6 border border-white/20">
+            <span className="w-2 h-2 rounded-full bg-primary-glow animate-pulse" />
             Enterprise AV & Conferencing Specialists
           </div>
 
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.02]">
             Transform Your Meeting Rooms into{" "}
-            <span className="text-gradient">Smart Collaboration Hubs</span>
+            <span className="bg-gradient-to-r from-primary-glow via-white to-primary-glow bg-clip-text text-transparent">
+              Smart Collaboration Hubs
+            </span>
           </h1>
 
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
+          <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
             End-to-end Video Conferencing & Meeting Room Solutions for Enterprises, Corporates & Government Projects.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button size="lg" className="gradient-cta text-primary-foreground hover:opacity-90 shadow-elegant text-base" asChild>
-              <a href="#contact">Get Free Consultation <ArrowRight className="w-4 h-4 ml-1" /></a>
+            <Button
+              size="lg"
+              className="gradient-cta text-primary-foreground hover:opacity-90 shadow-glow text-base"
+              asChild
+            >
+              <a href="#contact">
+                Get Free Consultation <ArrowRight className="w-4 h-4 ml-1" />
+              </a>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary/20 text-base" asChild>
-              <a href="#contact"><PlayCircle className="w-5 h-5 mr-2" /> Book Live Demo</a>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white/30 bg-white/5 backdrop-blur-md text-white hover:bg-white/15 hover:text-white text-base"
+              asChild
+            >
+              <a href="#contact">
+                <PlayCircle className="w-5 h-5 mr-2" /> Book Live Demo
+              </a>
             </Button>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3">
+          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
             {trust.map((t) => (
-              <div key={t.label} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <t.icon className="w-4 h-4 text-primary flex-shrink-0" />
-                <span>{t.label}</span>
+              <div
+                key={t.label}
+                className="flex items-start gap-2 text-sm text-white/85 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-3 py-3"
+              >
+                <t.icon className="w-4 h-4 text-primary-glow flex-shrink-0 mt-0.5" />
+                <span className="font-medium leading-snug">{t.label}</span>
               </div>
             ))}
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-          className="relative"
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="lg:col-span-4 hidden lg:flex flex-col gap-4"
         >
-          <div className="absolute -inset-4 gradient-hero opacity-30 blur-2xl rounded-3xl" />
-          <div className="relative rounded-3xl overflow-hidden shadow-elegant border border-border/50">
-            <img
-              src={heroImg}
-              alt="Smart conference room with video conferencing setup"
-              width={1920}
-              height={1280}
-              className="w-full h-auto"
-            />
+          <div className="bg-white/8 backdrop-blur-xl border border-white/15 rounded-2xl p-6 shadow-elegant">
+            <div className="text-5xl font-display font-bold bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent">
+              5000+
+            </div>
+            <div className="text-sm text-white/75 font-medium mt-1">Rooms Deployed Across India</div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="absolute -bottom-6 -left-6 bg-card rounded-2xl shadow-soft border border-border p-4 hidden md:block"
-          >
-            <div className="text-3xl font-display font-bold text-gradient">5000+</div>
-            <div className="text-xs text-muted-foreground font-medium">Rooms Deployed</div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.75 }}
-            className="absolute -top-6 -right-6 bg-card rounded-2xl shadow-soft border border-border p-4 hidden md:block"
-          >
-            <div className="text-3xl font-display font-bold text-gradient">15+ yrs</div>
-            <div className="text-xs text-muted-foreground font-medium">Industry Experience</div>
-          </motion.div>
+          <div className="bg-white/8 backdrop-blur-xl border border-white/15 rounded-2xl p-6 shadow-elegant">
+            <div className="text-5xl font-display font-bold bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent">
+              15+ yrs
+            </div>
+            <div className="text-sm text-white/75 font-medium mt-1">Industry Experience</div>
+          </div>
+          <div className="bg-white/8 backdrop-blur-xl border border-white/15 rounded-2xl p-6 shadow-elegant">
+            <div className="text-5xl font-display font-bold bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent">
+              24/7
+            </div>
+            <div className="text-sm text-white/75 font-medium mt-1">PAN India Support</div>
+          </div>
         </motion.div>
       </div>
+
+      {/* Bottom fade into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
     </section>
   );
 }
