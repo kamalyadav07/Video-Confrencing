@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone, FileText, ArrowRight } from "lucide-react";
+import { ContactDialog } from "@/components/landing/ContactDialog";
 
 export function FinalCTA() {
   return (
@@ -28,16 +29,22 @@ export function FinalCTA() {
                   <Phone className="w-5 h-5 mr-2" /> Call Now
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20 backdrop-blur text-base" asChild>
-                <a href="#contact">
-                  <FileText className="w-5 h-5 mr-2" /> Request Quote
-                </a>
-              </Button>
-              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 text-base" asChild>
-                <a href="#contact">
-                  Talk to Our Experts <ArrowRight className="w-4 h-4 ml-1" />
-                </a>
-              </Button>
+              <ContactDialog
+                defaultTitle="Request a Quote"
+                trigger={
+                  <Button size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20 backdrop-blur text-base">
+                    <FileText className="w-5 h-5 mr-2" /> Request Quote
+                  </Button>
+                }
+              />
+              <ContactDialog
+                defaultTitle="Talk to Our Experts"
+                trigger={
+                  <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 text-base">
+                    Talk to Our Experts <ArrowRight className="w-4 h-4 ml-1" />
+                  </Button>
+                }
+              />
             </div>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-primary-foreground/80 text-sm">

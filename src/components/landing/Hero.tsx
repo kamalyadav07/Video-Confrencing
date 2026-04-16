@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PlayCircle, ShieldCheck, MapPin, Award, Building2 } from "lucide-react";
-import heroBg from "@/assets/hero-datacenter.jpg";
+import heroBg from "@/assets/hero-meeting.jpg";
+import { ContactDialog } from "@/components/landing/ContactDialog";
 
 const trust = [
   { icon: Building2, label: "5000+ Projects Delivered" },
@@ -59,25 +60,29 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button
-              size="lg"
-              className="gradient-cta text-primary-foreground hover:opacity-90 shadow-glow text-base"
-              asChild
-            >
-              <a href="#contact">
-                Get Free Consultation <ArrowRight className="w-4 h-4 ml-1" />
-              </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white/30 bg-white/5 backdrop-blur-md text-white hover:bg-white/15 hover:text-white text-base"
-              asChild
-            >
-              <a href="#contact">
-                <PlayCircle className="w-5 h-5 mr-2" /> Book Live Demo
-              </a>
-            </Button>
+            <ContactDialog
+              defaultTitle="Get a Free Consultation"
+              trigger={
+                <Button
+                  size="lg"
+                  className="gradient-cta text-primary-foreground hover:opacity-90 shadow-glow text-base"
+                >
+                  Get Free Consultation <ArrowRight className="w-4 h-4 ml-1" />
+                </Button>
+              }
+            />
+            <ContactDialog
+              defaultTitle="Book a Live Demo"
+              trigger={
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white/30 bg-white/5 backdrop-blur-md text-white hover:bg-white/15 hover:text-white text-base"
+                >
+                  <PlayCircle className="w-5 h-5 mr-2" /> Book Live Demo
+                </Button>
+              }
+            />
           </div>
 
           <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
