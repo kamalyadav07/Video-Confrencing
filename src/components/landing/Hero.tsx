@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, PlayCircle, ShieldCheck, MapPin, Award, Building2 } from "lucide-react";
+import { ArrowRight, PlayCircle, ShieldCheck, MapPin, Award, Building2, Globe } from "lucide-react";
 import heroBg from "@/assets/hero-meeting.jpg";
 import { ContactDialog } from "@/components/landing/ContactDialog";
 
@@ -17,20 +17,21 @@ export function Hero() {
       id="top"
       className="relative min-h-[100svh] flex items-center pt-28 pb-20 overflow-hidden isolate"
     >
-      {/* Background image */}
+      {/* Background image with subtle blur for text legibility */}
       <div className="absolute inset-0 -z-20">
         <img
           src={heroBg}
-          alt="Futuristic data center corridor with glowing server racks"
+          alt="Premium boardroom with video conferencing setup"
           width={1920}
           height={1080}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-105 blur-[2px]"
         />
       </div>
 
-      {/* Dark gradient overlays for legibility */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.12_0.06_260)/0.92] via-[oklch(0.14_0.08_258)/0.78] to-[oklch(0.14_0.08_258)/0.45]" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[oklch(0.10_0.05_260)/0.85] via-transparent to-[oklch(0.10_0.05_260)/0.55]" />
+      {/* Strong dark gradient overlays for legibility */}
+      <div className="absolute inset-0 -z-10 bg-[oklch(0.10_0.05_260)/0.55]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.10_0.05_260)/0.96] via-[oklch(0.12_0.06_258)/0.85] to-[oklch(0.12_0.06_258)/0.55]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[oklch(0.08_0.04_260)/0.92] via-transparent to-[oklch(0.08_0.04_260)/0.65]" />
 
       {/* Glow accents */}
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary-glow/20 blur-3xl pointer-events-none -z-10" />
@@ -83,6 +84,16 @@ export function Hero() {
                 </Button>
               }
             />
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-primary-glow/50 bg-primary/20 backdrop-blur-md text-white hover:bg-primary/30 hover:text-white text-base"
+            >
+              <a href="https://www.compton.in" target="_blank" rel="noopener noreferrer">
+                <Globe className="w-5 h-5 mr-2" /> Visit Our Website
+              </a>
+            </Button>
           </div>
 
           <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
