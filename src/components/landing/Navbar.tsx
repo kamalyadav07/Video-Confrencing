@@ -7,7 +7,11 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/50">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-lg gradient-cta flex items-center justify-center text-primary-foreground font-bold font-display">C</div>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHYkeJ7TDhgV8ZPYsG5c_y5Kyofb4Bb5LKyVmixF1iuewJ6aqZNJ5SNONz&s=10"
+            alt="Compton Logo"
+            className="w-9 h-9 rounded-lg object-contain bg-white p-1"
+          />
           <span className="font-display font-bold text-lg tracking-tight">Compton</span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">

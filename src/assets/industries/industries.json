@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Corporate Offices",
+    "img": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "name": "Manufacturing Plants",
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "name": "Educational Institutions",
+    "img": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "name": "Government Projects",
+    "img": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "name": "IT & Tech Companies",
+    "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=200&q=80"
+  }
+]

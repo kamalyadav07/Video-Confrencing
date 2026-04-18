@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PlayCircle, ShieldCheck, MapPin, Award, Building2, Globe } from "lucide-react";
-import heroBg from "@/assets/hero-meeting.jpg";
 import { ContactDialog } from "@/components/landing/ContactDialog";
 
 const trust = [
@@ -16,128 +15,112 @@ export function Hero() {
     <section
       id="top"
       className="relative min-h-[100svh] flex items-center pt-28 pb-20 overflow-hidden isolate"
+      style={{ backgroundColor: '#0a0a0f' }} // Explicit dark background
     >
-      {/* Background image with subtle blur for text legibility */}
-      <div className="absolute inset-0 -z-20">
-        <img
-          src={heroBg}
-          alt="Premium boardroom with video conferencing setup"
-          width={1920}
-          height={1080}
-          className="w-full h-full object-cover scale-105 blur-[2px]"
-        />
-      </div>
-
-      {/* Strong dark gradient overlays for legibility */}
-      <div className="absolute inset-0 -z-10 bg-[oklch(0.10_0.05_260)/0.55]" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.10_0.05_260)/0.96] via-[oklch(0.12_0.06_258)/0.85] to-[oklch(0.12_0.06_258)/0.55]" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[oklch(0.08_0.04_260)/0.92] via-transparent to-[oklch(0.08_0.04_260)/0.65]" />
-
       {/* Glow accents */}
-      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary-glow/20 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-primary/30 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-500/20 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-blue-600/30 blur-3xl pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="lg:col-span-8 text-white"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-xs font-semibold mb-6 border border-white/20">
-            <span className="w-2 h-2 rounded-full bg-primary-glow animate-pulse" />
-            Enterprise AV & Conferencing Specialists
-          </div>
+      <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Text Content - NOW VISIBLE */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="flex flex-col justify-center h-full"
+          >
+            {/* Badge - dark background with light text */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/20 backdrop-blur-md text-blue-300 text-xs font-semibold mb-6 border border-blue-400/30 w-fit">
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+              Enterprise AV & Conferencing Specialists
+            </div>
 
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.02]">
-            Transform Your Meeting Rooms into{" "}
-            <span className="bg-gradient-to-r from-primary-glow via-white to-primary-glow bg-clip-text text-transparent">
-              Smart Collaboration Hubs
-            </span>
-          </h1>
+            {/* Heading - DARK BACKGROUND WITH LIGHT TEXT */}
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight text-white">
+              Transform Your Meeting Rooms into{' '}
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                Smart Collaboration Hubs
+              </span>
+            </h1>
 
-          <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
-            End-to-end Video Conferencing & Meeting Room Solutions for Enterprises, Corporates & Government Projects.
-          </p>
+            {/* Subheading - LIGHT GRAY FOR READABILITY */}
+            <p className="mt-6 text-base md:text-lg text-gray-300 max-w-xl leading-relaxed">
+              End-to-end Video Conferencing & Meeting Room Solutions for Enterprises, Corporates & Government Projects.
+            </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ContactDialog
-              defaultTitle="Get a Free Consultation"
-              trigger={
-                <Button
-                  size="lg"
-                  className="gradient-cta text-primary-foreground hover:opacity-90 shadow-glow text-base"
-                >
-                  Get Free Consultation <ArrowRight className="w-4 h-4 ml-1" />
-                </Button>
-              }
-            />
-            <ContactDialog
-              defaultTitle="Book a Live Demo"
-              trigger={
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 bg-white/5 backdrop-blur-md text-white hover:bg-white/15 hover:text-white text-base"
-                >
-                  <PlayCircle className="w-5 h-5 mr-2" /> Book Live Demo
-                </Button>
-              }
-            />
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-primary-glow/50 bg-primary/20 backdrop-blur-md text-white hover:bg-primary/30 hover:text-white text-base"
-            >
-              <a href="https://www.compton.in" target="_blank" rel="noopener noreferrer">
-                <Globe className="w-5 h-5 mr-2" /> Visit Our Website
-              </a>
-            </Button>
-          </div>
+            {/* Buttons */}
+            <div className="mt-8 flex flex-wrap gap-4">
+              <ContactDialog
+                defaultTitle="Get a Free Consultation"
+                trigger={
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white shadow-lg text-base px-6 border-0"
+                  >
+                    Get Free Consultation <ArrowRight className="w-4 h-4 ml-1" />
+                  </Button>
+                }
+              />
+              <ContactDialog
+                defaultTitle="Book a Live Demo"
+                trigger={
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-blue-400/40 bg-blue-500/10 backdrop-blur-md text-white hover:bg-blue-500/20 hover:text-white text-base px-6"
+                  >
+                    <PlayCircle className="w-5 h-5 mr-2" /> Book Live Demo
+                  </Button>
+                }
+              />
+            </div>
 
-          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {trust.map((t) => (
-              <div
-                key={t.label}
-                className="flex items-start gap-2 text-sm text-white/85 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-3 py-3"
+            {/* Third button */}
+            <div className="mt-3">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-blue-500/40 bg-blue-600/10 backdrop-blur-md text-white hover:bg-blue-600/20 hover:text-white text-base px-6"
               >
-                <t.icon className="w-4 h-4 text-primary-glow flex-shrink-0 mt-0.5" />
-                <span className="font-medium leading-snug">{t.label}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+                <a href="https://www.compton.in" target="_blank" rel="noopener noreferrer">
+                  <Globe className="w-5 h-5 mr-2" /> Visit Our Website
+                </a>
+              </Button>
+            </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="lg:col-span-4 hidden lg:flex flex-col gap-4"
-        >
-          <div className="bg-white/8 backdrop-blur-xl border border-white/15 rounded-2xl p-6 shadow-elegant">
-            <div className="text-5xl font-display font-bold bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent">
-              5000+
+            {/* Trust indicators */}
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-2xl">
+              {trust.map((t) => (
+                <div
+                  key={t.label}
+                  className="flex items-center gap-2 text-xs sm:text-sm text-gray-200 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 py-2.5"
+                >
+                  <t.icon className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                  <span className="font-medium leading-tight">{t.label}</span>
+                </div>
+              ))}
             </div>
-            <div className="text-sm text-white/75 font-medium mt-1">Rooms Deployed Across India</div>
-          </div>
-          <div className="bg-white/8 backdrop-blur-xl border border-white/15 rounded-2xl p-6 shadow-elegant">
-            <div className="text-5xl font-display font-bold bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent">
-              15+ yrs
+          </motion.div>
+
+          {/* Right: Image */}
+          <div className="flex justify-center items-center w-full h-full mt-8 lg:mt-0">
+            <div className="relative w-full max-w-[500px] mx-auto">
+              <div className="absolute -inset-4 bg-blue-500/20 rounded-3xl blur-2xl opacity-60" />
+              <img
+                src="https://www.presentationpeople.in/wp-content/uploads/2021/09/Optimized-business-people-wearing-masks-coronavirus-meeting-768x537.jpg"
+                alt="Business professionals in a collaborative meeting"
+                className="relative rounded-3xl shadow-2xl w-full h-auto object-cover border border-white/20"
+                style={{ maxHeight: 420, objectFit: 'cover' }}
+              />
             </div>
-            <div className="text-sm text-white/75 font-medium mt-1">Industry Experience</div>
           </div>
-          <div className="bg-white/8 backdrop-blur-xl border border-white/15 rounded-2xl p-6 shadow-elegant">
-            <div className="text-5xl font-display font-bold bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent">
-              24/7
-            </div>
-            <div className="text-sm text-white/75 font-medium mt-1">PAN India Support</div>
-          </div>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0f] to-transparent pointer-events-none" />
     </section>
   );
 }

@@ -5,7 +5,11 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-9 h-9 rounded-lg bg-primary-foreground text-primary flex items-center justify-center font-bold font-display">C</div>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHYkeJ7TDhgV8ZPYsG5c_y5Kyofb4Bb5LKyVmixF1iuewJ6aqZNJ5SNONz&s=10"
+                alt="Compton Logo"
+                className="w-9 h-9 rounded-lg object-contain bg-white p-1"
+              />
               <span className="font-display font-bold text-lg">Compton Computers</span>
             </div>
             <p className="text-sm text-primary-foreground/70">
