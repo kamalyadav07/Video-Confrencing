@@ -15,19 +15,32 @@ export function Navbar() {
           <span className="font-display font-bold text-lg tracking-tight">Compton</span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-          <a href="#solutions" className="hover:text-foreground transition-colors">Solutions</a>
-          <a href="#industries" className="hover:text-foreground transition-colors">Industries</a>
-          <a href="#process" className="hover:text-foreground transition-colors">Process</a>
-          <a href="#why" className="hover:text-foreground transition-colors">Why Compton</a>
+          <a href="#solutions" className="hover:text-foreground transition-colors">
+            Solutions
+          </a>
+          <a href="#industries" className="hover:text-foreground transition-colors">
+            Industries
+          </a>
+          <a href="#process" className="hover:text-foreground transition-colors">
+            Process
+          </a>
+          <a href="#why" className="hover:text-foreground transition-colors">
+            Why Compton
+          </a>
         </nav>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" className="hidden sm:inline-flex" asChild>
-            <a href="tel:+910000000000"><Phone className="w-4 h-4 mr-1" /> Call</a>
+            <a href="tel:+910000000000">
+              <Phone className="w-4 h-4 mr-1" /> Call
+            </a>
           </Button>
           <ContactDialog
             defaultTitle="Book a Live Demo"
             trigger={
-              <Button size="sm" className="gradient-cta text-primary-foreground hover:opacity-90 shadow-soft">
+              <Button
+                size="sm"
+                className="gradient-cta text-primary-foreground hover:opacity-90 shadow-soft"
+              >
                 Get Demo
               </Button>
             }

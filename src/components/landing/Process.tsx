@@ -2,10 +2,26 @@ import { motion } from "framer-motion";
 import { Search, PenTool, Wrench, Headphones } from "lucide-react";
 
 const steps = [
-  { icon: Search, title: "Requirement Analysis", desc: "We audit your spaces, workflows and platforms in detail." },
-  { icon: PenTool, title: "Solution Design & Demo", desc: "Custom proposal with live demo of recommended hardware." },
-  { icon: Wrench, title: "Installation & Integration", desc: "Certified engineers deploy and configure end-to-end." },
-  { icon: Headphones, title: "Support & Maintenance", desc: "Ongoing PAN India SLA-backed support, 365 days." },
+  {
+    icon: Search,
+    title: "Requirement Analysis",
+    desc: "We audit your spaces, workflows and platforms in detail.",
+  },
+  {
+    icon: PenTool,
+    title: "Solution Design & Demo",
+    desc: "Custom proposal with live demo of recommended hardware.",
+  },
+  {
+    icon: Wrench,
+    title: "Installation & Integration",
+    desc: "Certified engineers deploy and configure end-to-end.",
+  },
+  {
+    icon: Headphones,
+    title: "Support & Maintenance",
+    desc: "Ongoing PAN India SLA-backed support, 365 days.",
+  },
 ];
 
 export function Process() {
@@ -13,7 +29,9 @@ export function Process() {
     <section id="process" className="py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-sm font-semibold text-primary uppercase tracking-wider">Our Process</span>
+          <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+            Our Process
+          </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight">
             A Simple <span className="text-gradient">4-Step Process</span>
           </h2>

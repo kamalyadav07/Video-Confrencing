@@ -2,12 +2,36 @@ import { motion } from "framer-motion";
 import { Video, Camera, Monitor, Cast, Cog, Volume2, Check } from "lucide-react";
 
 const solutions = [
-  { icon: Video, title: "Video Conferencing Systems", desc: "Zoom, Teams & Google Meet certified rooms — ready out of the box." },
-  { icon: Camera, title: "HD Cameras with AI Tracking", desc: "Auto-framing, speaker tracking and intelligent noise cancellation." },
-  { icon: Monitor, title: "Smart Displays & Interactive Panels", desc: "4K touch panels for whiteboarding, annotation and presentation." },
-  { icon: Cast, title: "Wireless Presentation", desc: "BYOD casting from any device — no cables, no compatibility issues." },
-  { icon: Cog, title: "Conference Room Automation", desc: "One-touch lighting, blinds, displays and conferencing control." },
-  { icon: Volume2, title: "Audio Optimization", desc: "Beamforming mics and DSP tuning for boardrooms of any size." },
+  {
+    icon: Video,
+    title: "Video Conferencing Systems",
+    desc: "Zoom, Teams & Google Meet certified rooms — ready out of the box.",
+  },
+  {
+    icon: Camera,
+    title: "HD Cameras with AI Tracking",
+    desc: "Auto-framing, speaker tracking and intelligent noise cancellation.",
+  },
+  {
+    icon: Monitor,
+    title: "Smart Displays & Interactive Panels",
+    desc: "4K touch panels for whiteboarding, annotation and presentation.",
+  },
+  {
+    icon: Cast,
+    title: "Wireless Presentation",
+    desc: "BYOD casting from any device — no cables, no compatibility issues.",
+  },
+  {
+    icon: Cog,
+    title: "Conference Room Automation",
+    desc: "One-touch lighting, blinds, displays and conferencing control.",
+  },
+  {
+    icon: Volume2,
+    title: "Audio Optimization",
+    desc: "Beamforming mics and DSP tuning for boardrooms of any size.",
+  },
 ];
 
 const benefits = [
@@ -23,12 +47,15 @@ export function Solutions() {
     <section id="solutions" className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-sm font-semibold text-primary uppercase tracking-wider">Our Solution</span>
+          <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+            Our Solution
+          </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight">
             Compton <span className="text-gradient">Smart Meeting Room</span> Solutions
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
-            We design, deploy & manage fully integrated meeting room ecosystems — engineered for clarity, speed and zero friction.
+            We design, deploy & manage fully integrated meeting room ecosystems — engineered for
+            clarity, speed and zero friction.
           </p>
         </div>
 
@@ -56,7 +83,9 @@ export function Solutions() {
           <div className="absolute inset-0 grid-pattern opacity-20" />
           <div className="relative grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <span className="text-sm font-semibold text-primary-foreground/80 uppercase tracking-wider">What You Get</span>
+              <span className="text-sm font-semibold text-primary-foreground/80 uppercase tracking-wider">
+                What You Get
+              </span>
               <h3 className="mt-3 text-3xl md:text-4xl font-bold text-primary-foreground">
                 Outcomes that actually move the needle.
               </h3>

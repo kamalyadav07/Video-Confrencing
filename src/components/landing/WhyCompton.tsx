@@ -14,7 +14,9 @@ export function WhyCompton() {
     <section id="why" className="py-24 bg-surface-soft">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why Compton</span>
+          <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+            Why Compton
+          </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight">
             Why Choose <span className="text-gradient">Compton Computers?</span>
           </h2>
@@ -32,7 +34,9 @@ export function WhyCompton() {
             >
               <r.icon className="w-7 h-7 mx-auto text-primary mb-3" />
               <div className="text-3xl font-display font-bold text-gradient">{r.value}</div>
-              <div className="mt-1 text-xs text-muted-foreground font-medium leading-tight">{r.title}</div>
+              <div className="mt-1 text-xs text-muted-foreground font-medium leading-tight">
+                {r.title}
+              </div>
             </motion.div>
           ))}
         </div>

@@ -1,6 +1,13 @@
 import * as React from "react";
 import { z } from "zod";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -22,7 +29,10 @@ type ContactDialogProps = {
   defaultTitle?: string;
 };
 
-export function ContactDialog({ trigger, defaultTitle = "Get a Free Consultation" }: ContactDialogProps) {
+export function ContactDialog({
+  trigger,
+  defaultTitle = "Get a Free Consultation",
+}: ContactDialogProps) {
   const [open, setOpen] = React.useState(false);
   const [submitting, setSubmitting] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
@@ -96,7 +106,10 @@ export function ContactDialog({ trigger, defaultTitle = "Get a Free Consultation
             <p className="text-muted-foreground text-sm max-w-sm mx-auto">
               Your request has been received. A Compton specialist will contact you shortly.
             </p>
-            <Button onClick={() => handleOpenChange(false)} className="gradient-cta text-primary-foreground">
+            <Button
+              onClick={() => handleOpenChange(false)}
+              className="gradient-cta text-primary-foreground"
+            >
               Close
             </Button>
           </div>
@@ -111,11 +124,29 @@ export function ContactDialog({ trigger, defaultTitle = "Get a Free Consultation
             <Field label="Company Details" name="company" error={errors.company} />
             <div className="grid gap-1.5">
               <Label htmlFor="requirements">A brief about your requirements</Label>
-              <Textarea id="requirements" name="requirements" rows={4} placeholder="Tell us about your meeting room setup, room sizes, number of locations…" />
-              {errors.requirements && <p className="text-xs text-destructive">{errors.requirements}</p>}
+              <Textarea
+                id="requirements"
+                name="requirements"
+                rows={4}
+                placeholder="Tell us about your meeting room setup, room sizes, number of locations…"
+              />
+              {errors.requirements && (
+                <p className="text-xs text-destructive">{errors.requirements}</p>
+              )}
             </div>
-            <Button type="submit" size="lg" disabled={submitting} className="gradient-cta text-primary-foreground hover:opacity-90 shadow-glow">
-              {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting…</> : "Submit Request"}
+            <Button
+              type="submit"
+              size="lg"
+              disabled={submitting}
+              className="gradient-cta text-primary-foreground hover:opacity-90 shadow-glow"
+            >
+              {submitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting…
+                </>
+              ) : (
+                "Submit Request"
+              )}
             </Button>
             <p className="text-xs text-muted-foreground text-center">
               By submitting, you agree to be contacted by Compton regarding your enquiry.
@@ -127,7 +158,17 @@ export function ContactDialog({ trigger, defaultTitle = "Get a Free Consultation
   );
 }
 
-function Field({ label, name, type = "text", error }: { label: string; name: string; type?: string; error?: string }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  error,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  error?: string;
+}) {
   return (
     <div className="grid gap-1.5">
       <Label htmlFor={name}>{label}</Label>

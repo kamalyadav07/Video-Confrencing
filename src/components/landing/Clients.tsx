@@ -28,7 +28,8 @@ export function Clients() {
             Trusted by <span className="text-gradient">Leading Brands</span>
           </h2>
           <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-            Powering meeting rooms for India's most respected enterprises, institutions, and government bodies.
+            Powering meeting rooms for India's most respected enterprises, institutions, and
+            government bodies.
           </p>
         </div>
       </div>
@@ -55,9 +56,7 @@ export function Clients() {
                   (e.currentTarget as HTMLImageElement).style.display = "none";
                 }}
               />
-              <span className="font-display font-semibold text-primary-deep text-sm">
-                {c.name}
-              </span>
+              <span className="font-display font-semibold text-primary-deep text-sm">{c.name}</span>
             </div>
           ))}
         </div>

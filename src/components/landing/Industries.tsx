@@ -38,7 +38,9 @@ export function Industries() {
     <section id="industries" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-sm font-semibold text-primary uppercase tracking-wider">Industries</span>
+          <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+            Industries
+          </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight">
             Built for <span className="text-gradient">Every Industry</span>
           </h2>
@@ -63,15 +65,11 @@ export function Industries() {
                   loading="lazy"
                 />
               </div>
-              
+
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {industry.name}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {industry.description}
-                </p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{industry.name}</h3>
+                <p className="text-gray-600 leading-relaxed">{industry.description}</p>
               </div>
             </motion.div>
           ))}
