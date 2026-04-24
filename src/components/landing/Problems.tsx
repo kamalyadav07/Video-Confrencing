@@ -1,34 +1,45 @@
 import { motion } from "framer-motion";
 import { VolumeX, WifiOff, Layers, Unlink, Hourglass, AlertTriangle } from "lucide-react";
+import heroMeetingRoom from "@/assets/hero-meeting-room.jpg";
+import meetingRoom from "@/assets/IMG_2081.PNG";
+import productPanel from "@/assets/product-panel.jpg";
+import productPhone from "@/assets/product-phone.jpg";
+import productVideobar from "@/assets/product-videobar.jpg";
 
 const problems = [
   {
     icon: VolumeX,
+    image: heroMeetingRoom,
     title: "Poor Audio & Video Quality",
     desc: "Distorted sound, pixelated video, and embarrassing meeting moments.",
   },
   {
     icon: WifiOff,
+    image: productVideobar,
     title: "Connectivity Issues",
     desc: "Constant drops and reconnects that break momentum mid-discussion.",
   },
   {
     icon: Layers,
+    image: productPanel,
     title: "Platform Confusion",
     desc: "Switching between Zoom, Teams and Meet wastes precious meeting minutes.",
   },
   {
     icon: Unlink,
+    image: productPhone,
     title: "No Device Integration",
     desc: "Cameras, mics and displays that simply refuse to talk to each other.",
   },
   {
     icon: Hourglass,
+    image: meetingRoom,
     title: "Wasted Productivity",
-    desc: "10–15 minutes lost every meeting setting up the basics.",
+    desc: "10-15 minutes lost every meeting setting up the basics.",
   },
   {
     icon: AlertTriangle,
+    image: heroMeetingRoom,
     title: "Missed Decisions",
     desc: "Frustrated teams, delayed projects, and lost business outcomes.",
   },
@@ -58,13 +69,24 @@ export function Problems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
-              className="group p-7 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-soft transition-all"
+              className="group overflow-hidden rounded-[28px] bg-card border border-border hover:border-primary/30 hover:shadow-soft transition-all"
             >
-              <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <p.icon className="w-6 h-6 text-destructive" />
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+                <div className="absolute left-6 bottom-5 w-14 h-14 rounded-2xl bg-white/90 backdrop-blur flex items-center justify-center shadow-lg">
+                  <p.icon className="w-7 h-7 text-destructive" />
+                </div>
               </div>
-              <h3 className="font-display font-semibold text-lg">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+
+              <div className="p-7 pt-6">
+                <h3 className="font-display font-semibold text-lg">{p.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>

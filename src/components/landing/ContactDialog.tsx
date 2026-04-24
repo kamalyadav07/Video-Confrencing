@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { Loader2, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2, Mail, Phone } from "lucide-react";
 
 const schema = z.object({
   firstName: z.string().trim().min(1, "First name is required").max(50),
@@ -64,7 +64,6 @@ export function ContactDialog({
 
     setSubmitting(true);
     try {
-      // Persist locally for now (backend can be enabled later)
       const existing = JSON.parse(localStorage.getItem("compton_leads") ?? "[]");
       existing.push({ ...result.data, submittedAt: new Date().toISOString() });
       localStorage.setItem("compton_leads", JSON.stringify(existing));
@@ -92,8 +91,20 @@ export function ContactDialog({
       <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-display text-2xl">{defaultTitle}</DialogTitle>
-          <DialogDescription>
-            Share a few details and our experts will get back to you within 24 hours.
+          <DialogDescription className="space-y-3">
+            <span className="block">
+              Share a few details and our experts will get back to you within 24 hours.
+            </span>
+            <span className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+              <a href="tel:+919811021810" className="inline-flex items-center gap-2 hover:text-foreground transition-colors">
+                <Phone className="h-4 w-4" />
+                +91 98110 21810
+              </a>
+              <a href="mailto:query@compton.in" className="inline-flex items-center gap-2 hover:text-foreground transition-colors">
+                <Mail className="h-4 w-4" />
+                query@compton.in
+              </a>
+            </span>
           </DialogDescription>
         </DialogHeader>
 
@@ -128,7 +139,7 @@ export function ContactDialog({
                 id="requirements"
                 name="requirements"
                 rows={4}
-                placeholder="Tell us about your meeting room setup, room sizes, number of locations…"
+                placeholder="Tell us about your meeting room setup, room sizes, number of locations..."
               />
               {errors.requirements && (
                 <p className="text-xs text-destructive">{errors.requirements}</p>
@@ -142,7 +153,7 @@ export function ContactDialog({
             >
               {submitting ? (
                 <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting…
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting...
                 </>
               ) : (
                 "Submit Request"

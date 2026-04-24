@@ -30,8 +30,8 @@ export function Navbar() {
         </nav>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" className="hidden sm:inline-flex" asChild>
-            <a href="tel:+910000000000">
-              <Phone className="w-4 h-4 mr-1" /> Call
+            <a href="tel:+919811021810">
+              <Phone className="w-4 h-4 mr-1" /> +91 98110 21810
             </a>
           </Button>
           <ContactDialog

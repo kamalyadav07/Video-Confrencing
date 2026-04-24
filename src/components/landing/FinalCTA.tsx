@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { ArrowRight, CheckCircle2, Loader2, Phone } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { z } from "zod";
 
 const schema = z.object({
@@ -90,7 +90,7 @@ export function FinalCTA() {
                   className="bg-background text-primary shadow-glow text-base transition-all duration-300 hover:scale-105 hover:bg-background/90"
                   asChild
                 >
-                  <a href="tel:+910000000000">
+                  <a href="tel:+919811021810">
                     <Phone className="mr-2 h-5 w-5" /> Call Now
                   </a>
                 </Button>
@@ -100,6 +100,27 @@ export function FinalCTA() {
                 >
                   Talk to Our Experts <ArrowRight className="ml-1 h-4 w-4" />
                 </Button>
+              </div>
+
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-primary-foreground/90 md:justify-start">
+                <a
+                  href="tel:+919811021810"
+                  className="inline-flex items-center gap-2 hover:text-white transition-colors"
+                >
+                  <Phone className="h-4 w-4" />
+                  +91 98110 21810
+                </a>
+                <a
+                  href="mailto:query@compton.in"
+                  className="inline-flex items-center gap-2 hover:text-white transition-colors"
+                >
+                  <Mail className="h-4 w-4" />
+                  query@compton.in
+                </a>
+                <span className="inline-flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  B-35A, 2nd Floor, Kalkaji, New Delhi 110019
+                </span>
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-primary-foreground/80 md:justify-start">

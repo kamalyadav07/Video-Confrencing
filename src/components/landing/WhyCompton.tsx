@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { CalendarClock, CheckCircle2, Wrench, Map, Briefcase } from "lucide-react";
 
 const reasons = [
-  { icon: CalendarClock, title: "15+ Years Industry Experience", value: "15+" },
+  { icon: CalendarClock, title: "30 Years Industry Experience", value: "30" },
   { icon: CheckCircle2, title: "Successful Installations", value: "5000+" },
   { icon: Wrench, title: "End-to-End Execution", value: "100%" },
   { icon: Map, title: "PAN India Support Team", value: "28+" },
