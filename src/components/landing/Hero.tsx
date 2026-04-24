@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, PlayCircle, Award, Globe } from "lucide-react";
+import { ArrowRight, PlayCircle, Award, Globe, Phone, Mail, Sparkles } from "lucide-react";
 import { ContactDialog } from "@/components/landing/ContactDialog";
 import heroMeetingRoom from "@/assets/hero-meeting-room.jpg";
 
 const partners = ["Cisco", "Polycom", "Logitech", "Zoapi", "Barco"];
+const highlights = ["30 Years Experience", "5000+ Installations", "PAN India Support"];
 
 export function Hero() {
   return (
@@ -16,6 +17,7 @@ export function Hero() {
       {/* Glow accents */}
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-500/20 blur-3xl pointer-events-none -z-10" />
       <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-blue-600/30 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute inset-0 opacity-[0.18] grid-pattern pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-12 lg:gap-10 items-center lg:min-h-[720px]">
@@ -27,7 +29,7 @@ export function Hero() {
             className="flex flex-col justify-center h-full"
           >
             {/* Badge - dark background with light text */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/20 backdrop-blur-md text-blue-300 text-xs font-semibold mb-6 border border-blue-400/30 w-fit">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/20 backdrop-blur-md text-blue-300 text-xs font-semibold mb-6 border border-blue-400/30 w-fit shadow-[0_12px_30px_rgba(37,99,235,0.12)]">
               <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
               Enterprise AV & Conferencing Specialists
             </div>
@@ -45,6 +47,18 @@ export function Hero() {
               End-to-end Video Conferencing & Meeting Room Solutions for Enterprises and
               Corporates.
             </p>
+
+            <div className="mt-7 flex flex-wrap gap-3 max-w-2xl">
+              {highlights.map((item) => (
+                <div
+                  key={item}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-100 backdrop-blur-md"
+                >
+                  <Sparkles className="h-3.5 w-3.5 text-cyan-300" />
+                  {item}
+                </div>
+              ))}
+            </div>
 
             {/* Buttons */}
             <div className="mt-8 flex flex-wrap gap-4">
@@ -104,18 +118,58 @@ export function Hero() {
                 ))}
               </div>
             </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-5 text-sm text-slate-300">
+              <a
+                href="tel:+919811021810"
+                className="inline-flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <Phone className="h-4 w-4 text-cyan-300" />
+                +91 98110 21810
+              </a>
+              <a
+                href="mailto:query@compton.in"
+                className="inline-flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <Mail className="h-4 w-4 text-cyan-300" />
+                query@compton.in
+              </a>
+            </div>
           </motion.div>
 
           {/* Right: Image */}
           <div className="flex justify-center items-center w-full h-full mt-8 lg:mt-0 lg:self-stretch">
             <div className="relative w-full max-w-[820px] mx-auto lg:mr-0 lg:h-full flex items-center">
               <div className="absolute -inset-6 bg-blue-500/20 rounded-[2.25rem] blur-2xl opacity-70" />
+              <div className="absolute inset-x-10 -top-5 h-24 rounded-full bg-cyan-300/10 blur-3xl" />
               <img
                 src={heroMeetingRoom}
                 alt="Modern video conferencing room with a large collaboration display"
                 className="relative w-full h-auto lg:h-full rounded-[2.25rem] shadow-2xl object-cover border border-white/20"
                 style={{ maxHeight: 680, objectFit: "cover" }}
               />
+              <div className="absolute left-5 right-5 bottom-5 rounded-[24px] border border-white/15 bg-slate-950/70 p-5 text-white backdrop-blur-xl shadow-[0_24px_60px_rgba(0,0,0,0.3)] md:left-auto md:right-6 md:max-w-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300/90">
+                  Designed For Performance
+                </p>
+                <p className="mt-2 text-xl font-semibold leading-snug">
+                  High-clarity collaboration rooms with premium AV integration.
+                </p>
+                <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-slate-200/85">
+                  <div className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3">
+                    Smart displays
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3">
+                    Video bars
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3">
+                    Room control
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3">
+                    Deployment support
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

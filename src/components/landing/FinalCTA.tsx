@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { submitLead } from "@/lib/contactSubmission";
 import { toast } from "sonner";
-import { ArrowRight, CheckCircle2, Loader2, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { z } from "zod";
 
 const schema = z.object({
@@ -18,7 +19,6 @@ const schema = z.object({
 
 export function FinalCTA() {
   const [submitting, setSubmitting] = React.useState(false);
-  const [success, setSuccess] = React.useState(false);
   const [errors, setErrors] = React.useState<Record<string, string>>({});
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -52,9 +52,18 @@ export function FinalCTA() {
       const existing = JSON.parse(localStorage.getItem("compton_leads") ?? "[]");
       existing.push({ ...result.data, submittedAt: new Date().toISOString() });
       localStorage.setItem("compton_leads", JSON.stringify(existing));
+      const submitResult = await submitLead(result.data, "Final CTA");
       await new Promise((resolve) => setTimeout(resolve, 600));
-      setSuccess(true);
-      toast.success("Request received! Our team will reach out within 24 hours.");
+      toast.success(
+        submitResult.mode === "google-sheet"
+          ? "Request saved successfully to Google Sheets."
+          : submitResult.mode === "api"
+            ? "Request sent successfully. Our team will reach out within 24 hours."
+            : "Backend not available, so an email draft was opened with your enquiry details.",
+      );
+      window.location.href = "/thank-you";
+    } catch {
+      toast.error("We could not submit your request right now. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -124,9 +133,9 @@ export function FinalCTA() {
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-primary-foreground/80 md:justify-start">
-                <span className="flex items-center gap-2">✓ No-obligation consultation</span>
-                <span className="flex items-center gap-2">✓ Response within 24 hours</span>
-                <span className="flex items-center gap-2">✓ Custom tailored proposal</span>
+                <span className="flex items-center gap-2">No-obligation consultation</span>
+                <span className="flex items-center gap-2">Response within 24 hours</span>
+                <span className="flex items-center gap-2">Custom tailored proposal</span>
               </div>
             </div>
 
@@ -140,68 +149,50 @@ export function FinalCTA() {
                 </p>
               </div>
 
-              {success ? (
-                <div className="animate-in fade-in zoom-in space-y-3 py-8 text-center duration-300">
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg">
-                    <CheckCircle2 className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="font-display text-xl font-semibold">Thank you!</h3>
-                  <p className="mx-auto max-w-sm text-sm text-muted-foreground">
-                    Your request has been received. A Compton specialist will contact you shortly.
-                  </p>
-                  <Button
-                    onClick={() => setSuccess(false)}
-                    className="gradient-cta text-primary-foreground transition-all duration-300 hover:opacity-90"
-                  >
-                    Close
-                  </Button>
+              <form onSubmit={handleSubmit} className="mt-2 grid gap-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Field label="First Name" name="firstName" error={errors.firstName} />
+                  <Field label="Last Name" name="lastName" error={errors.lastName} />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="mt-2 grid gap-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <Field label="First Name" name="firstName" error={errors.firstName} />
-                    <Field label="Last Name" name="lastName" error={errors.lastName} />
-                  </div>
-                  <Field label="Email Address" name="email" type="email" error={errors.email} />
-                  <Field label="Phone Number" name="phone" type="tel" error={errors.phone} />
-                  <Field label="Company Details" name="company" error={errors.company} />
-                  <div className="grid gap-1.5">
-                    <Label htmlFor="requirements" className="text-sm font-medium text-gray-700">
-                      A brief about your requirements
-                    </Label>
-                    <Textarea
-                      id="requirements"
-                      name="requirements"
-                      rows={4}
-                      placeholder="Tell us about your meeting room setup, room sizes, number of locations..."
-                      className="resize-none transition-all duration-200 focus:ring-2 focus:ring-primary/20"
-                    />
-                    {errors.requirements && (
-                      <p className="animate-in slide-in-from-top-1 text-xs text-destructive">
-                        {errors.requirements}
-                      </p>
-                    )}
-                  </div>
-                  <Button
-                    type="submit"
-                    size="lg"
-                    disabled={submitting}
-                    className="gradient-cta text-primary-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:opacity-90 hover:shadow-xl"
-                  >
-                    {submitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Submitting...
-                      </>
-                    ) : (
-                      "Submit Request"
-                    )}
-                  </Button>
-                  <p className="text-center text-xs text-muted-foreground">
-                    By submitting, you agree to be contacted by Compton regarding your enquiry.
-                  </p>
-                </form>
-              )}
+                <Field label="Email Address" name="email" type="email" error={errors.email} />
+                <Field label="Phone Number" name="phone" type="tel" error={errors.phone} />
+                <Field label="Company Details" name="company" error={errors.company} />
+                <div className="grid gap-1.5">
+                  <Label htmlFor="requirements" className="text-sm font-medium text-gray-700">
+                    A brief about your requirements
+                  </Label>
+                  <Textarea
+                    id="requirements"
+                    name="requirements"
+                    rows={4}
+                    placeholder="Tell us about your meeting room setup, room sizes, number of locations..."
+                    className="resize-none transition-all duration-200 focus:ring-2 focus:ring-primary/20"
+                  />
+                  {errors.requirements && (
+                    <p className="animate-in slide-in-from-top-1 text-xs text-destructive">
+                      {errors.requirements}
+                    </p>
+                  )}
+                </div>
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={submitting}
+                  className="gradient-cta text-primary-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:opacity-90 hover:shadow-xl"
+                >
+                  {submitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    "Submit Request"
+                  )}
+                </Button>
+                <p className="text-center text-xs text-muted-foreground">
+                  By submitting, you agree to be contacted by Compton regarding your enquiry.
+                </p>
+              </form>
             </div>
           </div>
         </div>
